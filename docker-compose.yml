@@ -1,0 +1,30 @@
+version: '3'
+services:
+
+  sqitch:
+    image: sqitch
+    build: ./compose
+    volumes:
+      - ./:/repo
+    environment:
+      SQITCH_TARGET: db:pg://dbuser:password@db:5432/recipes
+
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: recipes
+      POSTGRES_USER: dbuser
+      POSTGRES_PASSWORD: password
+  
+  server:
+    image: postgrest/postgrest
+    ports:
+      - "3000:3000"
+    environment:
+      PGRST_DB_URI: postgres://dbuser:password@db:5432/recipes
+      PGRST_DB_SCHEMA: recipes
+      PGRST_DB_ANON_ROLE: web_anon
+    depends_on:
+      - db

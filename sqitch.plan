@@ -1,0 +1,13 @@
+%syntax-version=1.0.0
+%project=recipes
+
+appschema 2022-08-01T18:10:51Z sqitch <sqitch@b47989be3171> # Add schema for all recipe objects.
+steps [appschema] 2022-08-01T17:35:56Z Jeff Hemminger <hemminger_jeffrey@bah.com> # Add steps table
+ingredients [appschema] 2022-08-01T17:36:22Z Jeff Hemminger <hemminger_jeffrey@bah.com> # Add ingredients table
+recipes [steps ingredients] 2022-08-01T17:18:01Z Jeff Hemminger <hemminger_jeffrey@bah.com> # Add recipes table
+recipe_steps [recipes] 2022-08-01T17:18:01Z Jeff Hemminger <hemminger_jeffrey@bah.com> # Add recipe_steps table
+recipe_ingredients [recipes] 2022-08-01T17:18:01Z Jeff Hemminger <hemminger_jeffrey@bah.com> # Add recipe_ingredients table
+data [recipe_ingredients] 2022-08-02T15:55:07Z Jeff Hemminger <hemminger_jeffrey@bah.com> # Add data
+ingredients_view [recipe_ingredients] 2022-08-02T16:11:12Z Jeff Hemminger <hemminger_jeffrey@bah.com> # Quick View For Recipes and their ingredients
+steps_view [recipe_steps] 2022-08-02T16:11:46Z Jeff Hemminger <hemminger_jeffrey@bah.com> # Quick View For Recipes and their steps
+roles [steps_view] 2022-08-01T17:03:58Z Jeff Hemminger <hemminger_jeffrey@bah.com> # Add roles for recipes.
